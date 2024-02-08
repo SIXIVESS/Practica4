@@ -3,6 +3,7 @@ package mx.edu.itson.potros.practica4
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -10,11 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val pesoK: TextView = findViewById(R.id.weight)
-        val alturaE: TextView = findViewById(R.id.weight)
-        val imc: TextView = findViewById(R.id.imc)
-        val rango: TextView = findViewById(R.id.range)
-        val calcular: Button = findViewById(R.id.calcular)
+        val pesoK: EditText = findViewById(R.id.etKilos)
+        val alturaE: EditText = findViewById(R.id.etEstatura)
+        val calcular: Button = findViewById(R.id.btnCalcular)
+        val imc: TextView = findViewById(R.id.tvIMC)
+        val rango: TextView = findViewById(R.id.tvRange)
 
         calcular.setOnClickListener{
             var peso: Double =0.0
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity() {
                     color=R.color.colorBrown
                 }
                 resultado >= 40 ->{
-                    salud="Sobrepeso"
-                    color=R.color.colorYellow
+                    salud="Obesidad Grado 3"
+                    color=R.color.colorRed
                 }
                 else ->{
                     salud = "Error"
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             rango.setText(salud)
         }
     }
-    fun calcularIMC(height:Double,weight:Double):Double{
-        return weight/(height * height)
+    fun calcularIMC(kilos:Double,altura:Double):Double{
+        return kilos/(altura * altura)
     }
 }
